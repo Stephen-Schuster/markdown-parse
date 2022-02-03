@@ -39,7 +39,7 @@ public class MarkdownParse {
         System.out.println(links);
     }
 
-    public String converter(String args) {
+    public String converter(String args)throws IOException  {
         Path fileName = Path.of(args);
         String contents = Files.readString(fileName);
         return contents;
