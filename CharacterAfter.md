@@ -1,1 +1,1 @@
-[LinkName](google.com)a
+[LinkName](google.com) hello

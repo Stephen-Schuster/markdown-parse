@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-public class MarkdownParse {
+public class MarkdownParseCopy {
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
@@ -16,19 +16,9 @@ public class MarkdownParse {
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
             int openParen = markdown.indexOf("(", nextCloseBracket);
             int closeParen = markdown.indexOf(")", openParen);
-            if (currentIndex < 0 || nextCloseBracket < 0 || nextOpenBracket < 0 || openParen < 0 || closeParen < 0) {
-                break;
-            }
-            if (openParen == nextCloseBracket + 1) {
-                if (nextOpenBracket != 0 && markdown.charAt(nextOpenBracket - 1) != '!') {
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
-                } else if (markdown.charAt(currentIndex) == '[')
-                    toReturn.add(markdown.substring(openParen + 1, closeParen));
-            }
+            toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
-
         }
-
         return toReturn;
     }
 
@@ -37,11 +27,5 @@ public class MarkdownParse {
         String contents = Files.readString(fileName);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
-    }
-
-    public String converter(String args) {
-        Path fileName = Path.of(args);
-        String contents = Files.readString(fileName);
-        return contents;
     }
 }
