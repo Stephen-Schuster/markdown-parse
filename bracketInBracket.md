@@ -1,1 +1,1 @@
-[![title](shouldntcount.com)
+["![title"](shouldntcount.com)
