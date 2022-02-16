@@ -1,1 +1,1 @@
-['![title'](fox.jpg)
+\[![title](fox.jpg)
